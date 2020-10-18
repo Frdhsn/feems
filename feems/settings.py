@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -14,7 +15,7 @@ SECRET_KEY = 'zb-*o+3h2yi59v@174$=f2itws1)k$e*dfsf2*cnxq^_)3p=iq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://feemsiitju.herokuapp.com/']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -27,10 +28,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'student',
-    'user',
     'crispy_forms',
-    'staff'
+    'final',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
@@ -111,8 +111,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 
-LOGIN_REDIRECT_URL = 'user:home'
+LOGIN_REDIRECT_URL = 'final:homepage'

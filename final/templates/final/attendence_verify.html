@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto my-4">
+            <div class="card card-body">
+                {% if permission %}
+                    <div class="alert alert-success">
+                        <kbd>You Have Enough Attendence to participate in Exam</kbd>
+                        <br>
+                        <br>
+                        your attendence verification completed successfully.
+                        Now you can fillup your Payment Details
+                        
+                        thanks
+                        
+                        <a class="btn btn-primary" href="{%url 'final:payment_form'%}">Go To</a>
+                    </div>
+                {% else %}
+                <div class="alert alert-danger">
+                    <kbd>Check Your Attendence</kbd>
+                    <br>
+                    If you have Enough attendence then you are able to complete payment....
+
+                    thanks
+
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}

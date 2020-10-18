@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<br>
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card text-center">
+                <div class="card-header">Starting With</div>
+                <div class="card-body">
+
+
+
+                    <div class="row row-cols-1 row-cols-md-2">
+                        <div class="col mb-4">
+                          <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title">Student Part</h5>
+                              <p class="card-text">This Part Contains Student Information</p>
+                              <a href="{%url 'final:studentform'%}" class="btn btn-outline-success btn-block">Student </a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col mb-4">
+                          <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title">Others Part</h5>
+                              <p class="card-text">This is Teacher, Hall Office, Exam office</p>
+                              <a href="{%url 'final:staff_create'%}" class="btn btn-outline-info btn-block">Others </a>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

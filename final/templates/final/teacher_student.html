@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{%load crispy_forms_tags%}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+        <div class="card card-body mt-5">
+            <h5>Teacher</h5>
+
+        </div>
+        <div class="card card-body my-4">
+            <form action="" method="GET">
+                {{myfilter.form|crispy}}
+                <button class="btn btn-primary">Search</button>
+            </form>
+        </div>
+            <div class="card card-body my-4">
+                <table class='table'>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Roll</th>
+                            <th>Semister</th>
+                            <th>Have_attendence</th>
+                            <th>Update attendence</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for student in students %}
+                        {% for semister in student.semister_set.all %}
+                            <tr>
+                                <td>{{student.name}}</td>
+                                <td>{{student.roll}}</td>
+                                <td>{{semister.semister}}</td>
+                                <td>{{semister.have_attendence}}</td>
+                                <td>
+                                <a href="{%url 'final:update_student_by_teacher' semister.semister%}" class="btn btn-info">Update</a>
+                                </td>
+                            </tr>
+                        
+                        {% endfor %}
+                    
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

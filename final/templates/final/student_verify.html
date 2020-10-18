@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto my-4">
+            <div class="card card-body">
+                {% if permission %}
+                    <div class="alert alert-success">
+                        <kbd>Student Validation Complete</kbd>
+                        <br>
+                        <br>
+                        your student verification completed successfully.
+                        Now you can fillup your semister form
+                        
+                        thanks
+                        
+                        <a class="btn btn-primary" href="{%url 'final:semister_form'%}">Go To</a>
+                    </div>
+                {% else %}
+                <div class="alert alert-danger">
+                    <kbd>Student Validation Processing</kbd>
+                    <br>
+                    Your student verification under the way . please wait for this.
+                    when your student verification complete then you can doing next work.
+
+                    thanks
+
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}
