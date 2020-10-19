@@ -9,3 +9,12 @@ def exists_student(view_func):
         else:
             return view_func(request, *args, **kwargs)
     return wrapper_func
+
+
+def unauthorizeduser(view_func):
+    def wrapper_func(request, *args, **kwargs):
+        if request.user:
+            return redirect("final:homepage")
+        else:
+            return view_func(request, *args, **kwargs)
+    return wrapper_func

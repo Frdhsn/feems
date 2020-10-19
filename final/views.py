@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login as dj_login, logout
 from django.contrib import messages
 from .form import StudentForm, SemisterForm, StaffForm, UpdateStudentByTeacher, UpdateStudentByRegister
 from .models import Student, Semister_Fee, Semister
-from .decorator import exists_student
+from .decorator import exists_student, unauthorizeduser
 from .filters import StudentFilter
 # Create your views here.
 
@@ -13,6 +13,7 @@ def homepage(request):
     return render(request, 'final/homepage.html')
 
 
+@unauthorizeduser
 def signup(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
