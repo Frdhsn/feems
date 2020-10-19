@@ -165,8 +165,8 @@ def register_students(request):
     return render(request, 'final/register_students.html', cont)
 
 
-def update_student_by_teacher(request, semister_no):
-    student = Student.objects.get(user=request.user)
+def update_student_by_teacher(request, semister_no, student_id):
+    student = Student.objects.get(id=student_id)
     semister_for_student = Semister.objects.filter(
         student=student, semister=semister_no).first()
 
@@ -196,7 +196,8 @@ def update_student_by_register(request, student_id):
 
         if form.is_valid():
             form.save()
-            messages.info(request, f"Student Update By Register Office")
+            messages.info(
+                request, f"The student's identity is validate by Register office!")
             return redirect('final:register_students')
     else:
         form = UpdateStudentByRegister(instance=student)

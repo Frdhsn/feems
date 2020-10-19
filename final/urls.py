@@ -31,7 +31,7 @@ urlpatterns = [
          views.register_students, name='register_students'),
 
 
-    path('update-student-by-teacher/<str:semister_no>/',
+    path('update-student-by-teacher/<str:student_id>/<str:semister_no>/',
          views.update_student_by_teacher, name='update_student_by_teacher'),
 
     path('update-student-by-register/<str:student_id>/',
