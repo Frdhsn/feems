@@ -6,9 +6,11 @@ from .form import StudentForm, SemisterForm, StaffForm, UpdateStudentByTeacher, 
 from .models import Student, Semister_Fee, Semister
 from .decorator import exists_student, unauthorizeduser
 from .filters import StudentFilter
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
+@login_required(login_url='final:signin')
 def homepage(request):
     return render(request, 'final/homepage.html')
 

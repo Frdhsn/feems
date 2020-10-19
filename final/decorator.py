@@ -11,10 +11,10 @@ def exists_student(view_func):
     return wrapper_func
 
 
-def unauthorizeduser(view_func):
-    def wrapper_func(request, *args, **kwargs):
-        if request.user:
-            return redirect("final:homepage")
+def unauthorizeduser(called_func):
+    def wrapper(request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('final:homepage')
         else:
-            return view_func(request, *args, **kwargs)
-    return wrapper_func
+            return called_func(request, *args, **kwargs)
+    return wrapper
