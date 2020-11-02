@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-        <div class="card card-body mt-5">
+        {% comment %} <div class="card card-body mt-5">
             <h5>Student Update By Register</h5>
         </div>
         <div class="card card-body my-4">
@@ -13,29 +13,25 @@
                 {{myfilter.form|crispy}}
                 <button class="btn btn-primary">Search</button>
             </form>
-        </div>
+        </div> {% endcomment %}
             <div class="card card-body my-4">
                 <table class='table'>
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Roll</th>
-                            <th>Is_Student</th>
-                            <th>Update Student</th>
-                            <th>See All Payment</th>
+                            <th>Student Name</th>
+                            <th>Student Semister</th>
+                            <th>IS Register Verify</th>
+                            <th>Verify Payment</th>
                         </tr>
                     </thead>
                     <tbody>
-                    {% for student in students %}
+                    {% for student in student_semister_fee %}
                             <tr>
-                                <td>{{student.name}}</td>
-                                <td>{{student.roll}}</td>
-                                <td>{{student.is_student}}</td>
+                                <td>{{student.student}}</td>
+                                <td>{{student.semister}}</td>
+                                <td>{{student.is_register_verify}}</td>
                                 <td>
-                                <a href="{%url 'final:up' student.id%}" class="btn btn-danger">Update</a>
-                                </td>
-                                <td>
-                                <a href="{%url 'final:student_semister_fee' student.id%}" class="btn btn-danger">See All Fee</a>
+                                <a href="{%url 'final:update_student_payment_by_register' student.student.id student.semister%}" class="btn btn-danger">Verify</a>
                                 </td>
                             </tr>
                     

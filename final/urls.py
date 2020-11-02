@@ -22,6 +22,12 @@ urlpatterns = [
     path('payment-form/', views.payment_form, name='payment_form'),
     path('payment-verify/', views.payment_verify, name='payment_verify'),
 
+    path('student-semister-fee/<str:student_id>/',
+         views.student_semister_fee, name='student_semister_fee'),
+    path('update-student-payment-by-register/<str:student_id>/<str:semister_id>/',
+         views.update_student_payment_by_register, name='update_student_payment_by_register'),
+
+
 
     path('staff-create-form', views.staffform, name='staff_create'),
 

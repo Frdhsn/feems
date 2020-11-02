@@ -8,18 +8,14 @@
         <div class="col-md-6 mx-auto">
             <div class="card my-4">
                 <div class="card-header">
-                    Sign In Form
+                    Update Student Payment By Register
                 </div>
                 <div class="card-body">
                     <form action="" method="POST">
                         {%csrf_token%}
                         {{form|crispy}}
-                        <button class="btn btn-block btn-info">Sign In</button>
+                        <button class="btn btn-block btn-info">Update</button>
                     </form>
-                </div>
-                <div class="card card-body">
-
-                    <small>Do you Need and account? <a class="ml-3" href="{%url 'final:signup'%}">SignUp</a></small>
                 </div>
             </div>
         </div>

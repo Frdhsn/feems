@@ -1,12 +1,13 @@
+from django.contrib.auth.decorators import login_required
+from .filters import StudentFilter
+from .decorator import exists_student, unauthorizeduser
+from .models import Student, Semister_Fee, Semister
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login as dj_login, logout
 from django.contrib import messages
-from .form import StudentForm, SemisterForm, StaffForm, UpdateStudentByTeacher, UpdateStudentByRegister
-from .models import Student, Semister_Fee, Semister
-from .decorator import exists_student, unauthorizeduser
-from .filters import StudentFilter
-from django.contrib.auth.decorators import login_required
+from .form import StudentForm, SemisterForm, StaffForm, UpdateStudentByTeacher, UpdateStudentByRegister, UpdateStudentPaymentByRegister
+
 # Create your views here.
 
 
@@ -86,7 +87,6 @@ def attendence_verify(request, semister_no):
     student_semister = Semister.objects.filter(
         student=student, semister=semister_no).first()
     student_attendence = student_semister.have_attendence
-    print(student_attendence)
     return render(request, 'final/attendence_verify.html', {"permission": student_attendence})
 
 
@@ -118,12 +118,25 @@ def payment_form(request):
 
 
 def payment_verify(request):
+    payment = Semister_Fee.objects.filter(
+        student=request.user.student_user).last()
+    permission = payment.is_register_verify
 
     cont = {
-        'permission': True
+        'permission': permission
     }
 
     return render(request, 'final/payment_verify.html', cont)
+
+
+def student_semister_fee(request, student_id):
+    student = Student.objects.get(id=student_id)
+    student_semister_fee = Semister_Fee.objects.filter(student=student)
+
+    cont = {
+        'student_semister_fee': student_semister_fee
+    }
+    return render(request, 'final/student_semister_fee.html', cont)
 
 
 def staffform(request):
@@ -206,3 +219,23 @@ def update_student_by_register(request, student_id):
         form = UpdateStudentByRegister(instance=student)
 
     return render(request, 'final/update_student_by_register.html', {"form": form})
+
+
+def update_student_payment_by_register(request, student_id, semister_id):
+    student = Student.objects.get(pk=student_id)
+    semister_fee = Semister_Fee.objects.filter(
+        student=student, semister=semister_id).first()
+
+    if request.method == "POST":
+        form = UpdateStudentPaymentByRegister(
+            request.POST, instance=semister_fee)
+
+        if form.is_valid():
+            form.save()
+            messages.info(
+                request, f"The student's payment update completed by Register office!")
+            return redirect('final:student_semister_fee', student_id)
+    else:
+        form = UpdateStudentPaymentByRegister(instance=semister_fee)
+
+    return render(request, 'final/update_student_payment_by_register.html', {"form": form})

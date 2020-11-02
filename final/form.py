@@ -1,4 +1,4 @@
-from .models import Student, Semister, Staff
+from .models import Student, Semister, Staff, Semister_Fee
 from django import forms
 
 
@@ -33,3 +33,9 @@ class UpdateStudentByTeacher(forms.ModelForm):
     class Meta:
         model = Semister
         fields = ['have_attendence']
+
+
+class UpdateStudentPaymentByRegister(forms.ModelForm):
+    class Meta:
+        model = Semister_Fee
+        fields = ['is_register_verify']

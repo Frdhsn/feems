@@ -6,17 +6,25 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+# Devolopment
+
+SECRET_KEY = 'zb-*o+3h2yi59v@174$=f2itws1)k$e*dfsf2*cnxq^_)3p=iq'
+# 'zb-*o+3h2yi59v@174$=f2itws1)k$e*dfsf2*cnxq^_)3p=iq'
+ALLOWED_HOSTS = []
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
-# 'zb-*o+3h2yi59v@174$=f2itws1)k$e*dfsf2*cnxq^_)3p=iq'
+# Production
+
+# SECRET_KEY = os.environ.get("SECRET_KEY")
+# # 'zb-*o+3h2yi59v@174$=f2itws1)k$e*dfsf2*cnxq^_)3p=iq'
+# ALLOWED_HOSTS = ['feemsiitju.herokuapp.com']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = ['feemsiitju.herokuapp.com']
 
 
 # Application definition
