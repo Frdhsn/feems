@@ -8,9 +8,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Devolopment
 
-# SECRET_KEY = 'zb-*o+3h2yi59v@174$=f2itws1)k$e*dfsf2*cnxq^_)3p=iq'
+SECRET_KEY = 'zb-*o+3h2yi59v@174$=f2itws1)k$e*dfsf2*cnxq^_)3p=iq'
 # # 'zb-*o+3h2yi59v@174$=f2itws1)k$e*dfsf2*cnxq^_)3p=iq'
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
 
 
 # Quick-start development settings - unsuitable for production
@@ -19,9 +19,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # Production
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
+# SECRET_KEY = os.environ.get("SECRET_KEY")
 # # 'zb-*o+3h2yi59v@174$=f2itws1)k$e*dfsf2*cnxq^_)3p=iq'
-ALLOWED_HOSTS = ['feemsiitju.herokuapp.com']
+# ALLOWED_HOSTS = ['feemsiitju.herokuapp.com']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
