@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login as dj_login, logout
 from django.contrib import messages
 from .form import StudentForm, SemisterForm, StaffForm, UpdateStudentByTeacher, UpdateStudentByRegister, UpdateStudentPaymentByRegister
-
+from django.shortcuts import get_object_or_404
 # Create your views here.
 
 
@@ -239,3 +239,29 @@ def update_student_payment_by_register(request, student_id, semister_id):
         form = UpdateStudentPaymentByRegister(instance=semister_fee)
 
     return render(request, 'final/update_student_payment_by_register.html', {"form": form})
+
+
+def profile_page(request):
+    student = Student.objects.filter(user=request.user)
+    student_fee = []
+    if student:
+        student_fee = Semister_Fee.objects.filter(student=student[0])
+
+    cont = {
+        'student_fee': student_fee
+    }
+    return render(request, 'final/profile_page.html', cont)
+
+
+def preview_fee(request, student_id, semister_num):
+    student = Student.objects.get(pk=student_id)
+    student_fee = Semister_Fee.objects.filter(
+        student=student, semister=semister_num)
+    print(student_fee)
+
+    cont = {
+        'student_fee': student_fee,
+        'student_id': student_id
+    }
+
+    return render(request, 'final/preview_fee.html', cont)

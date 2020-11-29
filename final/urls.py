@@ -27,7 +27,8 @@ urlpatterns = [
     path('update-student-payment-by-register/<str:student_id>/<str:semister_id>/',
          views.update_student_payment_by_register, name='update_student_payment_by_register'),
 
-
+    path('preview-student-payment-by-register/<str:student_id>/<str:semister_num>/',
+         views.preview_fee, name='preview_student_payment_by_register'),
 
     path('staff-create-form', views.staffform, name='staff_create'),
 
@@ -41,6 +42,8 @@ urlpatterns = [
          views.update_student_by_teacher, name='update_student_by_teacher'),
 
     path('update-student-by-register/<str:student_id>/',
-         views.update_student_by_register, name='up')
+         views.update_student_by_register, name='up'),
+
+    path('profile-page/', views.profile_page, name="profile_page")
 
 ]

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{%load crispy_forms_tags%}
+{% block content %}
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mx-auto">
+        {% if not student_fee %}
+            There is no record for student
+        {% else %}
+        <a href="{%url 'final:student_semister_fee' student_id%}" class="btn btn-primary">Back To verify</a>
+            <div class="card card-body my-4">
+                <table class='table'>
+                    <thead>
+                        <tr>
+                            <th>Semister</th>
+                            <th>Admission Fee</th>
+                            <th>Session Charge</th>
+                            <th>Exam Fee</th>
+                            <th>Hall Fee</th>
+                            <th>Library Fee</th>
+                            <th>Transport Fee</th>
+                            <th>medical Fee</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for student in student_fee %}
+                            <tr>
+                                <td>{{student.semister}}</td>
+                                <td>{{student.admission_fee}}</td>
+                                <td>{{student.session_charge}}</td>
+                                <td>{{student.exam_fee}}</td>
+                                <td>{{student.hall_fee}}</td>
+                                <td>{{student.library_fee}}</td>
+                                <td>{{student.transport_fee}}</td>
+                                <td>{{student.medical_fee}}</td>
+                            </tr>
+                    
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}

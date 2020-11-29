@@ -10,6 +10,7 @@ django = "*"
 django-crispy-forms = "*"
 django-filter = "*"
 gunicorn = "*"
+pylint-django = "*"
 
 [requires]
 python_version = "3.8"

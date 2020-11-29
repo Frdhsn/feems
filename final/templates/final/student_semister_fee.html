@@ -22,6 +22,8 @@
                             <th>Student Semister</th>
                             <th>IS Register Verify</th>
                             <th>Verify Payment</th>
+                            <th>Preview Payment</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -32,6 +34,9 @@
                                 <td>{{student.is_register_verify}}</td>
                                 <td>
                                 <a href="{%url 'final:update_student_payment_by_register' student.student.id student.semister%}" class="btn btn-danger">Verify</a>
+                                </td>
+                                <td>
+                                <a href="{%url 'final:preview_student_payment_by_register' student.student.id student.semister%}" class="btn btn-success">preview</a>
                                 </td>
                             </tr>
                     
